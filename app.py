@@ -101,6 +101,10 @@ st.markdown(f"""
         color: #000000;
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
         transform: scale(1.05);
+        position: fixed;       /* Cố định theo viewport */
+        bottom: 20px;          /* Cách đáy 20px */
+        left: 50%;             
+        transform: translateX(-50%);
     }}
     .upload-box {{
         background: #1e1e1e;
