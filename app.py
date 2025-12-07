@@ -226,7 +226,7 @@ with c2:
     uploaded_file = st.file_uploader(
         "", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
 
-    analyze_clicked = st.button(" Phân tích ", key="analyze_btn")
+analyze_clicked = st.button(" Phân tích ", key="analyze_btn")
 
 if analyze_clicked:
     if uploaded_file is None:
