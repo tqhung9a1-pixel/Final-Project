@@ -209,12 +209,14 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="intro-text">Hãy bỏ vào bức ảnh bạn muốn phân tích 📷 :</div>',
-            unsafe_allow_html=True)
+c1, c2, c3 = st.columns([0.5, 3, 0.5])
+with c2:
+    st.markdown('<div class="intro-text">Hãy bỏ vào bức ảnh bạn muốn phân tích 📷 :</div>',
+                unsafe_allow_html=True)
 
-# UPLOAD ẢNH VÀ NÚT PHÂN TÍCH
-uploaded_file = st.file_uploader(
-    "", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
+    # UPLOAD ẢNH VÀ NÚT PHÂN TÍCH
+    uploaded_file = st.file_uploader(
+        "", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
 
 col1, col2, col3, col4, col5, col6, col7, col8, col9 = st.columns(9)
 with col5:
