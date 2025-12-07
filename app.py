@@ -221,20 +221,14 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-c1, c2, c3 = st.columns([0.5, 3, 0.5])
+c1, c2, c3 = st.columns([1, 2, 1])
 with c2:
+    analyze_clicked = st.button(" Phân tích ", key="analyze_btn")
     st.markdown('<div class="small-uploader">', unsafe_allow_html=True)
     uploaded_file = st.file_uploader(
         "", type=["png", "jpg", "jpeg"], label_visibility="collapsed"
     )
     st.markdown('</div>', unsafe_allow_html=True)
-
-    st.markdown("<div style='text-align:center;'>", unsafe_allow_html=True)
-
-    analyze_clicked = st.button(" Phân tích ", key="analyze_btn")
-
-    st.markdown("</div>", unsafe_allow_html=True)
-
 
 if analyze_clicked:
     if uploaded_file is None:
