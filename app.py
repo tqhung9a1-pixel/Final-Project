@@ -1,7 +1,7 @@
 import streamlit as st
 from convert import image_to_base64
 from convert import font_to_base64
-from main1 import run_prediction
+from main import run_prediction
 import base64
 
 # CẤU HÌNH TRANG
