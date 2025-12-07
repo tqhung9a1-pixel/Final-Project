@@ -26,9 +26,10 @@ st.markdown(f"""
     }}
     /*MỞ RỘNG TOÀN BỘ GIAO DIỆN*/
     .block-container {{
-        max-width: 90% !important;
-        padding-left: 2rem !important;
-        padding-right: 2rem !important;
+    max-width: 1200px !important;
+    margin: auto !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
     }}
     body {{
         background: #121212;
@@ -115,7 +116,9 @@ st.markdown(f"""
     position: fixed;
     top: 15px;
     left: 15px;
-    width: 165px;
+    width: 12vw;        
+    max-width: 165px;    
+    min-width: 90px;      
     z-index: 2147483647;
     }}
     </style>
@@ -209,14 +212,22 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+st.markdown("""
+<style>
+.small-uploader > div {
+    max-width: 350px;       /* giữ đẹp nhất */
+    margin: auto !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 c1, c2, c3 = st.columns([0.5, 3, 0.5])
 with c2:
-    st.markdown('<div class="intro-text">Hãy bỏ vào bức ảnh bạn muốn phân tích 📷 :</div>',
-                unsafe_allow_html=True)
-
-    # UPLOAD ẢNH VÀ NÚT PHÂN TÍCH
+    st.markdown('<div class="small-uploader">', unsafe_allow_html=True)
     uploaded_file = st.file_uploader(
-        "", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
+        "", type=["png", "jpg", "jpeg"], label_visibility="collapsed"
+    )
+    st.markdown('</div>', unsafe_allow_html=True)
 
 col1, col2, col3, col4, col5, col6, col7, col8, col9 = st.columns(9)
 with col5:
@@ -262,10 +273,10 @@ if analyze_clicked:
             """,
             unsafe_allow_html=True
         )
-        c1, c2, c3 = st.columns([0.5, 3, 0.5])
+        c1, c2, c3 = st.columns([1, 6, 1])
         with c2:
             st.pyplot(fig1, use_container_width=True)
-        c1, c2, c3 = st.columns([0.5, 3, 0.5])
+        c1, c2, c3 = st.columns([1, 6, 1])
         with c2:
             st.markdown(
                 "<div class='selected-title'>Ảnh vẽ lại bằng 5 màu nổi bật</div>", unsafe_allow_html=True)
