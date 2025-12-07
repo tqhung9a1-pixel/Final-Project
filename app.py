@@ -115,7 +115,7 @@ st.markdown(f"""
     position: fixed;
     top: 15px;
     left: 15px;
-    width: 140px;
+    width: 165px;
     z-index: 2147483647;
     }}
     </style>
