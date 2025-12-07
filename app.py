@@ -201,7 +201,7 @@ uploaded_file = st.file_uploader(
     "", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
 
 # NÚT "PHÂN TÍCH" – CĂN GIỮA BẰNG CỘT
-col1, col2, col3 = st.columns([1, 2, 1])
+col1, col2, col3 = st.columns([2, 1, 2])
 with col2:
     analyze_clicked = st.button(
         " Phân tích ", key="analyze_btn", use_container_width=True)
