@@ -119,7 +119,7 @@ st.markdown(f"""
     z-index: 2147483647;
     }}
     </style>
-    <img src="dataimage/png;base64,{logo_base64}" class="logo">
+    <img src="data:image/png;base64,{logo_base64}" class="logo">
 """, unsafe_allow_html=True)
 st.markdown("""
 <style>
