@@ -90,10 +90,10 @@ st.markdown(f"""
         letter-spacing: 1px;
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
         transition: all 0.3s ease;
-        position: fixed;      
-        top: 50%;             
-        left: 50%;            
-        transform: translate(-50%, -50%); 
+        top: auto;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
     }}
 
     div.stButton > button:hover {{
