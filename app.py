@@ -115,11 +115,11 @@ st.markdown(f"""
     position: fixed;
     top: 15px;
     left: 15px;
-    width: 500px;
+    width: 200px;
     z-index: 2147483647;
     }}
     </style>
-    <img src="data:image/png;base64,{logo_base64}" class="logo">
+    <img src="dataimage/png;base64,{logo_base64}" class="logo">
 """, unsafe_allow_html=True)
 st.markdown("""
 <style>
