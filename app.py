@@ -212,23 +212,17 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-st.markdown("""
-<style>
-.small-uploader > div {
-    max-width: 350px;       /* giữ đẹp nhất */
-    margin: auto !important;
-}
-</style>
-""", unsafe_allow_html=True)
 
-c1, c2, c3 = st.columns([1, 2, 1])
+c1, c2, c3 = st.columns([0.5, 3, 0.5])
 with c2:
-    analyze_clicked = st.button(" Phân tích ", key="analyze_btn")
-    st.markdown('<div class="small-uploader">', unsafe_allow_html=True)
+    st.markdown('<div class="intro-text">Hãy bỏ vào bức ảnh bạn muốn phân tích 📷 :</div>',
+                unsafe_allow_html=True)
+
+    # UPLOAD ẢNH VÀ NÚT PHÂN TÍCH
     uploaded_file = st.file_uploader(
-        "", type=["png", "jpg", "jpeg"], label_visibility="collapsed"
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
+        "", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
+
+    analyze_clicked = st.button(" Phân tích ", key="analyze_btn")
 
 if analyze_clicked:
     if uploaded_file is None:
@@ -270,10 +264,10 @@ if analyze_clicked:
             """,
             unsafe_allow_html=True
         )
-        c1, c2, c3 = st.columns([1, 6, 1])
+        c1, c2, c3 = st.columns([0.5, 3, 0.5])
         with c2:
             st.pyplot(fig1, use_container_width=True)
-        c1, c2, c3 = st.columns([1, 6, 1])
+        c1, c2, c3 = st.columns([0.5, 3, 0.5])
         with c2:
             st.markdown(
                 "<div class='selected-title'>Ảnh vẽ lại bằng 5 màu nổi bật</div>", unsafe_allow_html=True)
