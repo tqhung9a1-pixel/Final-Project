@@ -71,6 +71,7 @@ st.markdown(f"""
         line-height: 1.6;
         text-align: center;
         font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
     }}
 
     /* STYLE NÚT – KHÔNG DÙNG POSITION FIXED */
