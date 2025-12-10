@@ -127,7 +127,7 @@ div.stButton>button {
     letter-spacing: 1px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
     transition: all 0.3s ease;
-    width: 50% !important;
+    width: 80% !important;
     display: block;
     margin: 0 auto;
 }
