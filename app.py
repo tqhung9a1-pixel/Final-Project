@@ -27,7 +27,6 @@ st.markdown(
 st.markdown("""
 <div class="title-section">
     <div class="title-wrapper">
-        <div class="title-glow">ĐỒ ÁN CUỐI KÌ - NHÓM 3</div>
         <div class="title-main">ĐỒ ÁN CUỐI KÌ - NHÓM 3</div>
     </div>
 </div>
