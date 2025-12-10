@@ -70,7 +70,7 @@ if analyze_clicked:
         st.markdown(
             f'<img src="data:image/png;base64,{img_base64}" class="preview-image">', unsafe_allow_html=True)
         # SAVE TEMP IMAGE
-        save_path = "uploaded_image.jpg"
+        save_path = "anh-cua_minh.jpg"
         with open(save_path, "wb") as f:
             f.write(img_bytes)
         # CALL MODEL
