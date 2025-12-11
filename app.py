@@ -36,24 +36,23 @@ st.markdown("""
 st.markdown("""
 <div class="intro-container">
     <div class="intro-text">
-        Bạn có tin một model Machine Learnning cơ bản có thể phân biệt ngày và đêm chỉ từ hình ảnh?<br><br>
+        Bạn có tin một model Machine Learning cơ bản có thể phân biệt ngày và đêm chỉ từ hình ảnh?<br><br>
         Thử thách model của chúng tôi với bức ảnh của bạn! ☀️🌙
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# UPLOAD INSTRUCTION
+# FILE UPLOADER
 st.markdown('<div style="text-align: center; font-size: 18px; margin: 20px 0;">Hãy tải lên bức ảnh bạn muốn phân tích 📷 :</div>', unsafe_allow_html=True)
 
-# FILE UPLOADER
-c1, c2, c3 = st.columns([1, 6, 1])
-with c2:
+_, c, _ = st.columns([1, 6, 1])
+with c:
     uploaded_file = st.file_uploader(
         " ", type=["png", "jpg", "jpeg"], label_visibility="collapsed")
 
 # ANALYZE BUTTON CENTERED
-col1, col2, col3 = st.columns([2, 1, 2])
-with col2:
+_, c, _ = st.columns([2, 1, 2])
+with c:
     analyze_clicked = st.button(
         "Phân tích", key="analyze_btn", use_container_width=True)
 
@@ -64,29 +63,49 @@ if analyze_clicked:
     else:
         img_bytes = uploaded_file.read()
         img_base64 = base64.b64encode(img_bytes).decode()
+
+        # SHOW SELECTED IMAGE
         st.markdown('<div class="result-title">Ảnh bạn đã chọn</div>',
                     unsafe_allow_html=True)
         st.markdown(
             f'<img src="data:image/png;base64,{img_base64}" class="preview-image">', unsafe_allow_html=True)
+
         # SAVE TEMP IMAGE
         save_path = "anh-cua_minh.jpg"
         with open(save_path, "wb") as f:
             f.write(img_bytes)
-        # CALL MODEL
-        with st.spinner("🔍 Đang phân tích ảnh, vui lòng chờ..."):
+
+        with st.status("🔍 Đang phân tích ảnh, vui lòng chờ...", expanded=True) as status:
+            status.write("📤 Tải ảnh vào mô hình")
             result_label, fig1, fig2 = run_prediction(image_path=save_path)
+            status.write("📊 Tạo biểu đồ và vẽ lại ảnh")
+            status.update(label="Hoàn tất!", state="complete")
+
         # DISPLAY RESULT
         st.markdown(
-            '<div style="text-align: center; margin: 30px 0;"><h3 style="color: #00ff88;">Phân tích thành công!</h3></div>', unsafe_allow_html=True)
+            '<div style="text-align: center; margin: 30px 0;"><h3 style="color: #00ff88;">Phân tích thành công!</h3></div>',
+            unsafe_allow_html=True
+        )
         st.markdown(
-            f'<div style="text-align: center; font-size: 28px; color: white; font-weight: bold; margin: 10px 0;">🌞🌙 {result_label}</div>', unsafe_allow_html=True)
-        # PLOT CHART 1
-        c1, c2, c3 = st.columns([1, 6, 1])
-        with c2:
-            st.pyplot(fig1, use_container_width=True)
-        # PLOT CHART 2
-        st.markdown(
-            '<div class="result-title">Hình ảnh được vẽ lại với 5 màu chủ đạo</div>', unsafe_allow_html=True)
-        c1, c2, c3 = st.columns([1, 6, 1])
-        with c2:
-            st.pyplot(fig2, use_container_width=True)
+            f'<div class="result-label">🌞🌙 {result_label}</div>',
+            unsafe_allow_html=True
+        )
+        tab1, tab2 = st.tabs(["📈 Trích xuất đặc trưng", "🎨 Ảnh được vẽ lại"])
+
+        with tab1:
+            st.markdown(
+                '<div class="result-title">Phân tích đặc trưng ảnh</div>',
+                unsafe_allow_html=True
+            )
+            _, c, _ = st.columns([1, 6, 1])
+            with c:
+                st.pyplot(fig1, use_container_width=True)
+
+        with tab2:
+            st.markdown(
+                '<div class="result-title">Hình ảnh được vẽ lại với 5 màu chủ đạo</div>',
+                unsafe_allow_html=True
+            )
+            _, c, _ = st.columns([1, 6, 1])
+            with c:
+                st.pyplot(fig2, use_container_width=True)
